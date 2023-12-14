@@ -1,0 +1,83 @@
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+ 
+  }
+.main{
+    height: 100vh;
+    background-image: linear-gradient(90deg,rgba(220, 248, 94, 0.478),#f5ab4474),url("../images/image1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+  display: flex;
+  
+  
+}
+.row{
+    min-height: 500px;
+    
+    margin: auto;
+   
+}
+input{
+    height: 45px;
+}
+#input:focus{
+    outline: 0;
+
+}
+i{
+    cursor: pointer;
+}
+ul li{
+    list-style-type: none;
+    font-size: 30px;
+}
+ul li{
+position: relative;
+}
+ul li::before{
+    content: '';
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-image: url("../images/thumbsup.jpg");
+    background-size: cover;
+    background-position: center;
+    top: 8px;
+    left: -40px;
+    
+}
+ul li.checked{
+    text-decoration: line-through;
+}
+ul li.checked::before{
+    content: '';
+    position: absolute;
+    height: 40px;
+    width: 35px;
+    background-image: url("../images/greenthumbsup.jpg");
+    background-size: cover;
+    background-position: center;
+    top: 4px;
+    left: -40px;
+}
+ul li span{
+    position: absolute;
+    right: 400px;
+    top: -5px;
+    font-size: 40px;
+    color: red;
+    text-align: center;
+}
+ul li span:hover{
+   cursor: pointer;
+}
+
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST APP</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  
+
+</head>
+<body>
+    <div class="container-fluid main">
+        <div class="row w-50 rounded-2 bg-white shadow ">
+            <div class="col-md-12 pt-4">
+                <h1 class="font-effect-fire text-center">TO DO LIST</h1>
+            </div>
+            <span id="item"></span>
+            <div class="d-flex justify-content-center align-items-center">
+       <input type="text" class="border-2" id="input" placeholder="type here....">
+      
+     <button id="add" onclick="addTask()" ><i class="fa fa-plus fs-3 bg-success text-center text-white p-2" aria-hidden="true"></i></button>
+    
+        </div>
+      
+       <div class="ms-5 mx-3">
+        <ul class="list-container">
+         
+
+        </ul>
+        
+</div>
+       
+</div>
+
+    </div>
+
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script>
+   const inputBox=document.querySelector("#input")
+   const listContainer=document.querySelector(".list-container")
+
+   $("#add").click(function(){
+    if(inputBox.value==="")
+    {
+        alert("please add item")
+    }
+    else{
+      
+        let li = document.createElement("li")
+        li.innerHTML=inputBox.value
+
+       listContainer.appendChild(li)
+      
+       let span = document.createElement("span");
+span.innerHTML = "\u00d7";
+li.appendChild(span)
+     
+    }
+    inputBox.value=""
+    saveData();
+  
+  
+   })
+
+   listContainer.addEventListener("click",function(e){
+    if(e.target.tagName==="LI"){
+        e.target.classList.toggle("checked");
+        saveData();
+    }
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData();
+
+    }
+   },false);
+
+   function saveData(){
+    localStorage.setItem("data",listContainer.innerHTML)
+   }
+
+   function showTask(){
+    listContainer.innerHTML=localStorage.getItem("data")
+   }
+    
+   showTask();
+    </script>
+
+
+</body>
+</html>
